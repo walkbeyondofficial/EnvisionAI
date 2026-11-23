@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Envision AI Client Profile",
+  "type": "object",
+  "required": ["client_id", "business_name", "package", "platforms", "brand", "content_rules", "approval"],
+  "properties": {
+    "client_id": { "type": "string" },
+    "business_name": { "type": "string" },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" }
+      }
+    },
+    "industry": { "type": "string" },
+    "location": { "type": "string" },
+    "website": { "type": "string" },
+    "package": { "enum": ["starter", "growth", "pro"] },
+    "status": { "enum": ["prospect", "onboarding", "active", "paused", "churned"], "default": "onboarding" },
+    "goals": {
+      "type": "object",
+      "properties": {
+        "main_goal": { "type": "string" },
+        "kpis": { "type": "array", "items": { "type": "string" } },
+        "baseline": { "type": "object" }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "languages": { "type": "array", "items": { "type": "string" } },
+        "pain_points": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "required": ["colors", "tone"],
+      "properties": {
+        "logo_url": { "type": "string" },
+        "colors": { "type": "array", "items": { "type": "string" } },
+        "fonts": { "type": "array", "items": { "type": "string" } },
+        "tone": { "type": "string" },
+        "canva_brand_kit": { "type": "string" }
+      }
+    },
+    "content_rules": {
+      "type": "object",
+      "properties": {
+        "pillars": { "type": "array", "items": { "type": "string" } },
+        "formats": { "type": "array", "items": { "enum": ["image", "carousel", "poster", "video"] } },
+        "never_cover": { "type": "array", "items": { "type": "string" } },
+        "avoid_words": { "type": "array", "items": { "type": "string" } },
+        "hashtag_sets": { "type": "array", "items": { "type": "string" } },
+        "compliance_notes": { "type": "string" }
+      }
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["platform", "handle", "posts_per_week"],
+        "properties": {
+          "platform": { "enum": ["instagram", "tiktok"] },
+          "handle": { "type": "string" },
+          "linked_in_metricool": { "type": "boolean" },
+          "posts_per_week": { "type": "integer", "minimum": 0 },
+          "posting_windows": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "owner_approval_required": { "const": true },
+        "client_signoff_required": { "type": "boolean" }
+      }
+    },
+    "billing": {
+      "type": "object",
+      "properties": {
+        "monthly_fee": { "type": "number" },
+        "currency": { "type": "string" },
+        "invoice_day": { "type": "integer", "minimum": 1, "maximum": 28 }
+      }
+    },
+    "learnings": { "type": "array", "items": { "type": "string" } }
+  }
+}
