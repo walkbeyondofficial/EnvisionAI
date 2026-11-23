@@ -1,0 +1,58 @@
+agency:
+  name: Envision AI
+  timezone: Asia/Colombo
+  max_employees: 3
+  owner_approval_required: true      # never publish without owner approval
+
+agents:
+  - id: design
+    name: Design Agent
+    spec: agents/design-agent.md
+    ideas_per_client_per_day: 5
+    may_publish: false
+  - id: publisher
+    name: Publisher Agent
+    spec: agents/publisher-agent.md
+    may_publish: true                # only after status == APPROVED
+  - id: finance_marketing
+    name: Finance & Marketing Agent
+    spec: agents/finance-marketing-agent.md
+    may_publish: false
+
+schedule:
+  ideas_generated_at: "18:00"        # day D-1
+  gate1_owner_picks_by: "21:00"      # day D-1
+  build_starts_at: "06:00"           # day D
+  gate2_owner_final_approval_by: "09:00"
+  default_if_no_approval: hold       # hold | never auto-publish
+
+platforms:
+  enabled: [instagram, tiktok]
+  sizes:
+    instagram_feed: [1080, 1350]
+    reels_tiktok: [1080, 1920]
+
+connections:
+  canva: { plan: free, status: connected }
+  metricool: { status: connected, mode: create_for_review }
+  google_sheets: { status: connected }
+  google_drive: { status: not_connected }   # owner action
+  github: { status: not_linked }            # owner action
+
+statuses:
+  - IDEA_PROPOSED
+  - IDEA_APPROVED
+  - IDEA_REJECTED
+  - BUILDING
+  - READY_FOR_PUBLISHER
+  - READY_FOR_REVIEW
+  - CHANGES_REQUESTED
+  - APPROVED
+  - REJECTED
+  - SCHEDULED
+  - PUBLISHED
+  - FAILED
+
+sheets:
+  workbook: "Envision AI — Operations"
+  tabs: [Clients, Idea Queue, Approval Queue, Content Calendar, Finance, Leads]
