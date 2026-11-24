@@ -1,0 +1,13 @@
+{
+  "name": "envision-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Human-gated social content workflow for Envision AI",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=18" }
+}

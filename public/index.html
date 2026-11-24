@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Envision AI</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <main>
+    <header><div><p class="eyebrow">ENVISION AI</p><h1>Owner approval console</h1></div><div class="safety">PUBLISHING: HOLD BY DEFAULT</div></header>
+    <section class="card">
+      <h2>Client</h2>
+      <form id="client-form"><input id="client-id" placeholder="client-id" required><input id="client-name" placeholder="Business name" required><input id="client-pillars" placeholder="Pillars (comma-separated)"><button>Add client</button></form>
+    </section>
+    <section class="card"><h2>Generate ideas</h2><div id="run-controls"></div></section>
+    <section class="grid">
+      <article class="card"><h2>Gate 1 — choose one idea</h2><div id="ideas"></div></article>
+      <article class="card"><h2>Gate 2 — final post</h2><div id="content"></div></article>
+    </section>
+    <section class="card"><h2>Audit log</h2><div id="audit"></div></section>
+  </main>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

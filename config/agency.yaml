@@ -1,0 +1,26 @@
+agency:
+  name: Envision AI
+  timezone: Asia/Colombo
+  owner_approval_required: true
+  default_if_no_approval: hold
+schedule:
+  ideas_generated_at: "18:00"
+  gate1_owner_picks_by: "21:00"
+  build_starts_at: "06:00"
+  gate2_owner_final_approval_by: "09:00"
+platforms:
+  enabled: [instagram, tiktok]
+statuses:
+  - IDEA_PROPOSED
+  - IDEA_APPROVED
+  - IDEA_REJECTED
+  - BUILDING
+  - READY_FOR_PUBLISHER
+  - READY_FOR_REVIEW
+  - CHANGES_REQUESTED
+  - APPROVED
+  - REJECTED
+  - SCHEDULED
+  - PUBLISHED
+  - FAILED
+  - HOLD

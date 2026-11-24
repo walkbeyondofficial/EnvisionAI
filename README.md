@@ -1,30 +1,37 @@
-# Envision AI
+# Envision AI — MVP
 
-An AI-run social media marketing agency: three AI agents (Design, Publisher, Finance & Marketing) plus one human owner who approves what gets built and what goes live. Launch platforms: Instagram and TikTok.
+A local-first, human-gated social content workflow for Instagram and TikTok.
 
-**Full proposal and plan:** [docs/PROPOSAL.md](docs/PROPOSAL.md)
+## Safety model
 
-## Repository map
-| Path | Contents |
-|---|---|
-| `docs/PROPOSAL.md` | Proposal, architecture, phased plan, KPIs, risks |
-| `docs/WORKFLOW.md` | Daily cycle and Google Sheets layout |
-| `docs/SETUP_CHECKLIST.md` | Connections and owner actions |
-| `docs/DRIVE_FOLDER_STRUCTURE.md` | Google Drive folder layout |
-| `agents/` | Role specs for the 3 agents |
-| `clients/_TEMPLATE/` | Client profile template |
-| `schemas/` | JSON schema for client profiles |
-| `config/agency.yaml` | Schedule, statuses, connection status |
+- The owner must approve one of five ideas (**Gate 1**).
+- The owner must approve the completed post (**Gate 2**).
+- Publishing is impossible unless an item is in `APPROVED` status.
+- Missing approval, webhook failure, or unknown status defaults to `HOLD`.
+- Publishing integrations are adapters and remain disabled until credentials are configured.
 
-## How it works
-1. Design Agent proposes 5 ideas per client per day.
-2. Owner approves 1 (Gate 1).
-3. Design Agent builds it in Canva (free plan).
-4. Publisher Agent prepares the post in Metricool for review.
-5. Owner approves the final (Gate 2).
-6. Post publishes automatically; analytics feed the next day's ideas.
+## Run
 
-Nothing is published without owner approval.
+```bash
+npm start
+```
 
-## Privacy
-Keep this repo private. Do not commit real client profiles, credentials or API tokens.
+Open `http://localhost:3000`.
+
+## Test
+
+```bash
+npm test
+```
+
+## Workflow
+
+1. Add or select a client.
+2. Generate exactly five ideas.
+3. Approve one idea (Gate 1).
+4. Build the approved asset details.
+5. Prepare the publisher review.
+6. Approve or reject the final post (Gate 2).
+7. Publish only after explicit approval.
+
+The data store is `data/agency.json`. It is excluded from Git. No real client, credential, or token data belongs in this repository.
