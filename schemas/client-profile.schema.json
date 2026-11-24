@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Envision AI Client Profile",
+  "type":"object",
+  "required":["client_id","business_name","package","platforms","brand","content_rules","approval"],
+  "properties":{
+    "client_id":{"type":"string","minLength":1},
+    "business_name":{"type":"string","minLength":1},
+    "package":{"enum":["starter","growth","pro"]},
+    "platforms":{"type":"array","items":{"type":"object","required":["platform","handle","posts_per_week"],"properties":{"platform":{"enum":["instagram","tiktok"]},"handle":{"type":"string"},"posts_per_week":{"type":"integer","minimum":0}}}},
+    "brand":{"type":"object","required":["colors","tone"],"properties":{"colors":{"type":"array","items":{"type":"string"}},"tone":{"type":"string"}}},
+    "content_rules":{"type":"object","properties":{"pillars":{"type":"array","items":{"type":"string"}},"never_cover":{"type":"array","items":{"type":"string"}},"avoid_words":{"type":"array","items":{"type":"string"}}}},
+    "approval":{"type":"object","required":["owner_approval_required"],"properties":{"owner_approval_required":{"const":true}}}
+  }
+}
